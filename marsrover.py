@@ -83,7 +83,7 @@ class Rover:
                     exit()
 
             
-            print("Location is " + str(self.x) + " " + str(self.y) + " " + self.curr_dir)
+        print("Location is " + str(self.x) + " " + str(self.y) + " " + self.curr_dir)
         self.grid.grid[self.y][self.x] = self.direction_char[self.curr_dir]
         self.grid.grid[start_y][start_x] = '#'
         self.grid.display_grid()
@@ -92,7 +92,6 @@ class Rover:
 
 def verify_coords(input_text):
     pattern = re.compile("([0-9]+( [0-9]+ [NESW]))", re.IGNORECASE)
-    print(input_text)
     if bool(pattern.match(input_text)) == False:
         print("Invalid coordinates provided")
         exit()
@@ -103,6 +102,10 @@ def verify_coords(input_text):
 
 grid_dimensions =  input("Enter grid dimensions: ")
 grid_tuple = grid_dimensions.split(' ')
+
+if len(grid_tuple) != 2:
+    print("Invalid grid dimensions")
+    exit()
 
 try:
     grid_tuple = [int(x) for x in grid_tuple]
